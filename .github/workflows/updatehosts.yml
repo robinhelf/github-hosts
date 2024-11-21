@@ -32,7 +32,7 @@ jobs:
         with:
           name: "update github hosts"
           tag_name: "update github hosts"
-          make_latest: $(date +'%s')
+          make_latest: "update github hosts"
           files: |
             hosts.rsc
 
