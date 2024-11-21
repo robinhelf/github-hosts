@@ -26,13 +26,12 @@ jobs:
           sudo curl -s https://hosts.gitcdn.top/hosts.txt |sed -e '/^s*$/d' -e '/^#.*/d' -e 's/^/add address=/g' -e 's/    */  name=/g' |sed -e $'1i\\\n/ip dns static' |sed '$a \/' |sed '$a /file remove hosts.rsc'>hosts.rsc
 
       - name: Create Release tag hosts.rsc
-     
-
         uses: softprops/action-gh-release@v2
         with:
           name: "update github hosts"
-          tag_name: "update github hosts"
-          make_latest: "update github hosts"
+          tag_name: "111"
+          make_latest: "222"
+          prerelease:  "333"
           files: |
             hosts.rsc
 
