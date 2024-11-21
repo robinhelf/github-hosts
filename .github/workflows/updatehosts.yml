@@ -28,7 +28,7 @@ jobs:
       - name: Create Release tag hosts.rsc
         uses: softprops/action-gh-release@v2
         with:
-          name: "update github hosts"
+          name: "github hosts"
           tag_name: "hosts"
           make_latest: "1"
           prerelease:  "hosts"
