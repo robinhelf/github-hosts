@@ -29,6 +29,6 @@ jobs:
       - name: Create Release tag hosts.rsc
         uses: softprops/action-gh-release@v2
         with:
-          name: "BUILD_TIME=$(date +'%s')"
+          name: "$(date +'%s')"
           files: |
             hosts.rsc
