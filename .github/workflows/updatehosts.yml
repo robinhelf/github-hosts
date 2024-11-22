@@ -22,8 +22,13 @@ jobs:
       - name: update hosts
         id: get_latest
         run: |
-
           sudo curl -s https://hosts.gitcdn.top/hosts.txt |sed -e '/^s*$/d' -e '/^#.*/d' -e 's/^/add address=/g' -e 's/    */  name=/g' |sed -e $'1i\\\n/ip dns static' |sed '$a \/' |sed '$a /file remove hosts.rsc'>hosts.rsc
+
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v4
+        with:
+          name: hosts.rsc
+          path: hosts.rsc
 
       - name: Create Release tag hosts.rsc
         uses: softprops/action-gh-release@v2
