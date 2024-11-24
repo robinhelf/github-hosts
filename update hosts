@@ -1,0 +1,6 @@
+:log info "========== update hosts =========="
+/file remove [/file find name=hosts.rsc]
+/ip dns static remove [/ip dns stat  find name~"git"]
+/tool fetch url="https://ghp.ci/https://github.com/robinhelf/github-hosts/releases/download/hosts/hosts.rsc"
+/import hosts.rsc
+:log info "========== update hosts end =========="
