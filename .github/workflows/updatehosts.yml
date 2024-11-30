@@ -23,7 +23,9 @@ jobs:
         id: get_latest
         run: |
           sudo curl -s https://hosts.gitcdn.top/hosts.txt |sed -e '/^s*$/d' -e '/^#.*/d' -e 's/^/add address=/g' -e 's/    */ name=/g' |sed -e $'1i\\\n/ip dns static' |sed '$a \/'>dns.rsc
-          sudo curl -s https://hosts.gitcdn.top/hosts.txt |sed -e '/^s*$/d' -e '/^#.*/d' -e 's/^/add address=/g' -e 's/  *\S*$/ list=github/g' |sed -e $'1i\\\n/ip firewall address-list' |sed '$a \/'>list.rsc
+          sudo curl -s https://hosts.gitcdn.top/hosts.txt |sed -e '/^s*$/d' -e '/^#.*/d' -e 's/^/add address=/g' -e 's/  *\S*$/  list=github/g'>list.txt
+          sudo sort -n list.txt | sed '$!N; /^\(.*\)\n\1$/!P; D' |sed -e $'1i\\\n/ip firewall address-list' |sed '$a \/'>list.rsc
+
 
       - name: Create Release tag hosts.rsc
         uses: softprops/action-gh-release@v2
