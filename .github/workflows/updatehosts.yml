@@ -3,7 +3,7 @@ on:
   # push:
   #   branches: [ "main" ]
   schedule:
-    - cron: "* */4 * * *"
+    - cron: "0 */4 * * *"
   workflow_dispatch:
 
 permissions:
@@ -12,9 +12,13 @@ permissions:
 jobs:
   Set_BuildTime:
     runs-on: ubuntu-22.04
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     outputs:
       BUILD_TIME: ${{ steps.set_buildtime.outputs.BUILD_TIME }}
     steps:
+      - uses: actions/checkout@v4
+    
       - name: Set build time
         id: set_buildtime
         run: echo "BUILD_TIME=$(date +'%s')" >> $GITHUB_OUTPUT
