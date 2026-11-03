@@ -32,8 +32,8 @@ jobs:
           sudo curl -s https://cdn.jsdelivr.net/gh/pexcn/daily@gh-pages/chnroute/chnroute.txt \
                 | sed -e '/^\s*$/d' \
                       -e '/^#/d' \
-                      -e 's|^|/ip firewall address-list add list=chn address=|' \
-                | sed -e '1i/ip firewall address-list remove [find list=chn]' \
+                      -e 's|^|/ip firewall address-list add list=chn_list address=|' \
+                | sed -e '1i/ip firewall address-list remove [find list=chn_list]' \
                 > chnroute.rsc
 
       - name: Create Release tag hosts.rsc
